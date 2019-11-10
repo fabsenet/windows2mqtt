@@ -13,9 +13,20 @@ namespace windows2mqtt
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             //todo nlog, autofac, mqttnet
+            await Task.Delay(2000);
+            var mw = new MainWindow();
+            mw.Show();
+
+            await Task.Delay(5000);
+
+            mw.Close();
+            GC.Collect();
+
+
         }
+
     }
 }
